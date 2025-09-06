@@ -9,6 +9,7 @@ import requests
 import pandas as pd
 import plotly.express as px
 import json
+import os
 
 
 from streamlit.components.v1 import html
@@ -17,24 +18,31 @@ from streamlit_lottie import st_lottie
 
 #abrimos los csv
 
+data_path = "data"
+
 festivales_city_clean = pd.read_csv(
-    r'data\festivales_city_clean.csv', sep=',').drop_duplicates()
+    os.path.join(data_path, "festivales_city_clean.csv"), sep=',').drop_duplicates()
 
 festivales_genre_clean = pd.read_csv(
-    r'data\festivales_genre_clean.csv', sep=',').drop_duplicates()
+    os.path.join(data_path, "festivales_genre_clean.csv"), sep=',').drop_duplicates()
 
 festivales_concat = pd.read_csv(
-    r'data\festivales_concat.csv', sep=',').drop_duplicates()
+    os.path.join(data_path, "festivales_concat.csv"), sep=',').drop_duplicates()
 
 festivales_join = pd.read_csv(
-    r'data\festivales_join.csv', sep=',').drop_duplicates()
+    os.path.join(data_path, "festivales_join.csv"), sep=',').drop_duplicates()
+
 
 numbers_to_months = {
     1: 'Enero', 2: 'Febrero', 3: 'Marzo', 4: 'Abril', 5: 'Mayo', 6: 'Junio',
     7: 'Julio', 8: 'Agosto', 9: 'Septiembre', 10: 'Octubre', 11: 'Noviembre', 12: 'Diciembre'
 }
 
-with open("mapa.html", "r", encoding="utf-8") as f:
+# Leer mapa.html en la misma carpeta del script
+script_dir = os.path.dirname(__file__)  # Directorio donde está este archivo .py
+mapa_path = os.path.join(script_dir, "mapa.html")
+
+with open(mapa_path, "r", encoding="utf-8") as f:
     mapa_html = f.read()
 
 
