@@ -145,10 +145,10 @@ def column_menu(festivales, column):
     
     with col2:
         if column =='city' and len(column_elements)==11:
-            st.image("images/sunsets2.jpg", use_column_width=True)
+            st.image("images/sunsets2.jpg", use_container_width=True)
             
         if column =='genre':
-            st.image("images/Concert_aesthetic.jpg",use_column_width=True)
+            st.image("images/Concert_aesthetic.jpg",use_container_width=True)
             
         if column =='city' and len(column_elements)!=11:
             st.write("\n")
